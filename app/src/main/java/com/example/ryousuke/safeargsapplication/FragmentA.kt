@@ -10,6 +10,7 @@ import android.widget.EditText
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.ryousuke.safeargsapplication.models.User
 import kotlinx.android.synthetic.main.fragment_a.view.*
 import kotlinx.coroutines.internal.RemoveFirstDesc
 
@@ -23,11 +24,19 @@ class FragmentA : Fragment() {
         val view = inflater.inflate(R.layout.fragment_a,container,false)
 
         //ここで編集したやつを渡す nullチェックがわからん
-        val editText =view.editText_et.text.toString()
+
+        //ここで作成しない
+        //val editText =view.editText_et.text.toString()
 
         view.next_btn.setOnClickListener {
-            val action = FragmentADirections.actionFragmentAToFragmentB(editText)
-            Navigation.findNavController(view).navigate(action)
+
+            val name = view.editText_et.text.toString()
+
+            val user = User(name)
+
+            //ここでRebuild
+            val action = FragmentADirections.actionFragmentAToFragmentB(user)
+            findNavController().navigate(action)
         }
 
         return view

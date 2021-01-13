@@ -1,5 +1,6 @@
 package com.example.ryousuke.safeargsapplication
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +13,8 @@ class FragmentB : Fragment() {
 
     val args: FragmentBArgs by navArgs()
 
+    //String型のやり取りを確認してくれる?
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -19,10 +22,7 @@ class FragmentB : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_b, container, false)
 
-        var myEditText = args.editName
-        view.textView_tx.setText(myEditText)
-
-
+        view.textView_tx.text = "Your Name is ${args.currentUser.name}"
 
         return view
     }

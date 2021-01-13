@@ -23,8 +23,7 @@
             android:id="@+id/action_fragmentB_to_fragmentA"
             app:destination="@id/fragmentA" />
         <argument
-            android:name="editName"
-            app:argType="string"
-            android:defaultValue="empty" />
+            android:name="currentUser"
+            app:argType="com.example.ryousuke.safeargsapplication.models.User" />
     </fragment>
 </navigation>
